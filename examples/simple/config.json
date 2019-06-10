@@ -1,0 +1,6 @@
+{
+	"region": "cn-shanghai",
+    "product_key": "{your_product_key}",
+    "device_name": "{your_device_name}",
+    "device_secret": "{device_secret}"
+}
