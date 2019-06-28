@@ -15,10 +15,9 @@
 # limitations under the License.
 #
 #
-
-
-#
-# !!! Please update config.json and tsl.json by your data !!!!
+#  usage:
+#  1. update config.json with your device information
+#  2. update tsl.json of your product (downloaded from Iot Console)
 #
 
 from linkkit import linkkit
@@ -51,9 +50,6 @@ def load_config(filename):
     with open(filename, encoding='utf-8') as f:
         return json.load(f)
     return {}
-
-
-print('!!! please update config.json and tsl.json by your configuration !!!!\n\n')
 
 
 ###################################

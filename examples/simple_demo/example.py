@@ -20,7 +20,8 @@
 #  1. create the new topic /{pk}/{dn}/user/echo (sub & pub) for your product
 #     in Iot Console(https://iot.console.aliyun.com)
 #  2. update config_info with your device information
-###############
+#
+
 
 from linkkit import linkkit
 import logging
@@ -110,7 +111,7 @@ thing_client.connect_async()
 g_msg_count = 0
 
 
-def cmd_pub_to_update():
+def cmd_pub_to_update_topic():
     global g_msg_count
     g_msg_count += 1
     payload = "test, id: %d" % g_msg_count
@@ -121,7 +122,7 @@ def cmd_pub_to_update():
 g_msg_echo_count = 0
 
 
-def cmd_pub_to_echo():
+def cmd_pub_to_echo_topic():
     global g_msg_echo_count
     g_msg_echo_count += 1
     print("pub message, topic:%s, count:%d" % (echo_topic, g_msg_echo_count))
@@ -131,12 +132,6 @@ def cmd_pub_to_echo():
 
 def cmd_print_state():
     print('connect_state:', thing_client.check_state())
-
-
-def cmd_upload_file():
-    result = thing_client.upload_file_sync("./test.txt", 'test.txt')
-    print('result, code:%s, file_store_id:%s, upload_size:%d' % (result.code,
-                       result.file_store_id, result.upload_size))
 
 
 def dump_help():
@@ -157,9 +152,9 @@ while True:
     if msg == '0':
         cmd_print_state()
     elif msg == '1':
-        cmd_pub_to_update()
+        cmd_pub_to_update_topic()
     elif msg == '2':
-        cmd_pub_to_echo()
+        cmd_pub_to_echo_topic()
     if msg.lower() == 'q':
         print('quit...')
         break
